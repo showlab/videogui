@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="description"
+        content="HyperNeRF handles topological variations by modeling a family of shapes in a higher-dimensional space, thereby producing more realistic renderings and more accurate geometric reconstructions.">
+  <meta name="keywords" content="HyperNeRF, Nerfies, D-NeRF, NeRF"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta property="og:image" content="./static/images/thumbnail.png"/>
+  <link rel="image_src" href="./static/images/thumbnail.png"> -->
+  <!-- <link rel="icon"
+        type="image/x-icon"
+        href="./static/images/favicon.png"/> -->
+  <link rel="icon" type="image/x-icon" href="assets/videogui.png">
+
+
+  <title>VideoGUI</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EDF010G6PN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EDF010G6PN');
+
+
+  </script>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="./static/slick/slick-theme.css" />
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #209CEE;
+      position: fixed;
+      width: 100%;
+      transition: background-color 0.5s ease;
+      /* 为背景颜色改变添加过渡效果 */
+    }
+
+    .navbar.scrolled {
+      background-color: #209CEE;
+    }
+
+    .navbar li {
+      float: left;
+    }
+
+    .navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: color 0.5s ease;
+      /* 为文本颜色改变添加过渡效果 */
+    }
+
+    .navbar.scrolled li a {
+      color: white;
+    }
+
+    /* .navbar li a:hover {
+      background-color: #111;
+    } */
+  </style>
+
+  <script>
+    window.onscroll = function () {
+      var navbar = document.getElementById('navbar');
+      if (window.pageYOffset > 0) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <ul class="navbar" id="navbar">
+    <li><a href="#home"><img src="assets/videogui.png" alt="Home"
+          style="height:30px; width:30px; vertical-align:middle; margin-right:5px;"> <strong>VideoGUI</strong> </a>
+    </li>
+  </ul>
+
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div> -->
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <!-- <div class="column is-4 has-text-centered">
+          <img src="static/images/logo.svg" alt="HyperNeRF"/>
+        </div> -->
+        </div>
+        <div class="container has-text-centered">
+          <h1 class="title is-2 publication-title">
+            <br>
+            <img src="assets/videogui.png" alt="Home"
+          style="height:40px; width:40px; vertical-align:middle; margin-right:5px;"> VideoGUI: A Benchmark for GUI Automation<br>from Instructional Videos
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+            <a href="https://qinghonglin.github.io/">Kevin Qinghong Lin</a><sup>&#9825;</sup>,</span>
+            <span class="author-block">
+            <a href="https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en">Linjie Li</a><sup>&#9824;</sup>,</span>
+            <span class="author-block">
+            <a href="https://scholar.google.com/citations?user=No9OsocAAAAJ&hl=en">Difei Gao</a><sup>&#9825;</sup>,</span>
+            <span class="author-block">
+            <a href="https://frank6200db.github.io/">Qinchen Wu</a><sup>&#9825;</sup>,</span>
+            <br>
+            <span class="author-block">
+            <a href="https://scholar.google.com/citations?user=X_kJ5-4AAAAJ&hl=zh-CN">Mingyi Yan</a><sup>&#9825;</sup>,</span>
+            <span class="author-block">
+            <a href="https://zyang-ur.github.io/">Zhengyuan Yang</a><sup>&#9824;</sup>,</span>
+            <span class="author-block">
+            <a href="https://www.microsoft.com/en-us/research/people/lijuanw/">Lijuan Wang</a><sup>&#9824;</sup>,</span>
+            <span class="author-block">
+            <a href="https://sites.google.com/view/showlab">Mike Zheng Shou</a><sup>&#9825;</sup></span>
+            <span class="author-block">
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>&#9825;</sup>Show Lab, National University of Singapore,</span>
+            <span class="author-block"><sup>&#9824;</sup>Microsoft</span>
+            <!-- <span class="author-block"><sup>♢</sup>Microsoft Research Asia</span>
+            <span class="author-block"><sup>♤</sup>Microsoft</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://openreview.net/pdf?id=o3yygm3lnzS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (comi)</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/abs//2312.13108" class="external-link button is-normal is-rounded is-dark"> -->
+                <a href="./assets/preprint.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/showlab/videogui"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+              <a href=""
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="far fa-images"></i>
+                </span>
+                <span>Data</span>
+                </a>
+              </span> -->
+              <div></br></div>
+              <!-- <div class="is-size-5 publication-authors">
+                <span class="author-block"><b></b></span>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="columns is-centered">
+        <h2 class="title is-3">Can AI assistants recreate this animation effects in PowerPoint?</h2>
+      </div>
+      <div class="container is-max-desktop">
+        <center>
+          <video id="teaser" autoplay controls muted loop playsinline width="50%">
+            <source src="./assets/preview_PPT_17.mp4" type="video/mp4">
+          </video>
+          <figure style="width: 75%;">
+            <p class="caption" style="margin-bottom: 1px;  text-align: left">
+These effects include 3D model, rotation, and transition. Learn more from this <a href="https://www.youtube.com/watch?v=8M3LCiBm_iQ">instructional video</a>.
+            </p>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <h2 class="title is-3" >How do Humans and Agents behave?</h2>
+    </div>
+    <div class="container is-max-desktop">
+      <center>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <video id="teaser1" autoplay controls muted loop playsinline width="100%">
+              <source src="./assets/human_PPT_17.mp4" type="video/mp4">
+            </video>
+            <figure style="width: 100%;">
+              <p class="caption" style="margin-bottom: 1px;  text-align: justify">
+              <strong>👨‍💻 Human demonstration</strong>: record after watching the <a href="https://www.youtube.com/watch?v=8M3LCiBm_iQ">video</a>.
+              </p>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <video id="teaser2" autoplay controls muted loop playsinline width="100%">
+              <source src="./assets/agent_PPT_17.mp4" type="video/mp4">
+            </video>
+            <figure style="width: 100%;">
+              <p class="caption" style="margin-bottom: 1px;  text-align: justify">
+              <strong>🤖️ GPT-4o Agent</strong>: workflow automation using <a href="https://pyautogui.readthedocs.io/en/latest">PyAutoGUI</a>.
+              </p>
+            </figure>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <p class="caption" style="margin-top: -20px; text-align: center;">
+              <b>Challenges:</b> The agent fails to complete the full task, struggles with each milestone, and execute at a slow speed (2x).
+            </p>
+          </div>
+        </div>
+      </center>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">TL;DR</h2>
+        <div class="content has-text-centered">
+          <p>
+            A Multi-modal Benchmark for Visual-centric GUI Automation from Instructional Videos.
+          </p>
+        </div>
+      </div>
+    </div>    
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <h2 class="title is-3">What's New?</h2>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              <!-- VideoGUI focuses on professional and novel software like PR, AE for video editing, and Stable Diffusion, Runway for visual creation. 
+              We source tasks from high-quality instructional videos, with annotators replicating these to reproduce effects; 
+              We provide detailed annotations with planning procedures and recorded actions for hierarchical evaluation. -->
+            <ul>
+            <li><strong>Visual-centric softwares and tasks:</strong> VideoGUI focuses on professional and novel software like PR and AE for video editing, or Stable Diffusion and Runway for visual creation. Besides, the task query emphasizes visual preview rather than textual instructions.</li>
+            <li><strong>Instructional videos with human demonstration:</strong> We source novel tasks from high-quality instructional videos, with annotators replicating these to reproduce effects.</li>
+            <li><strong>Hierarchical planning and actions:</strong> We provide detailed annotations with planning procedures and recorded actions for hierarchical evaluation.</li>            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      </br>
+      <CENter>
+        <img src="./assets/teaser.png" alt="A brief illustration of VideoGUI. VideoGUI focuses on professional and novel software like PR, AE for video editing, and Stable Diffusion, Runway for visual creation. We source tasks from high-quality instructional videos, with annotators replicating these to reproduce effects; We provide detailed annotations with planning procedures and recorded actions for hierarchical evaluation.">
+
+        <!-- <video id="teaser" autoplay controls muted loop playsinline width="70%">
+          <source src="./assets/AssistGUI_method.png" type="video/mp4">
+        </video>
+
+        <video id="teaser" autoplay controls muted loop playsinline width="70%">
+          <source src="./assets/badminton.mp4" type="video/mp4">
+        </video>
+
+        <video id="teaser" autoplay controls muted loop playsinline width="70%">
+          <source src="./assets/gopro.mp4" type="video/mp4">
+        </video>
+
+        <video id="teaser" autoplay controls muted loop playsinline width="70%">
+          <source src="./assets/cook.mp4" type="video/mp4">
+        </video> -->
+      </CENter>
+
+    </div>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Graphical User Interface (GUI) automation holds significant promise for enhancing human productivity by assisting with computer tasks. Existing task formulations primarily focus on simple tasks that can be specified by a single, language-only instruction, such as “Insert a new slide.” In this work, we introduce VideoGUI, a novel multi-modal benchmark designed to evaluate GUI assistants on visual-centric GUI tasks. Sourced from high-quality web instructional videos, our benchmark focuses on tasks involving professional and novel software (e.g., Adobe Photoshop or Stable Diffusion WebUI) and complex activities (e.g., video editing). VideoGUI evaluates GUI assistants through a hierarchical process, allowing for identification of the specific levels at which they may fail: (i) high-level planning: reconstruct procedural subtasks from visual conditions without language descrip- tions; (ii) middle-level planning: generate sequences of precise action narrations based on visual state (i.e., screenshot) and goals; (iii) atomic action execution: perform specific actions such as accurately clicking designated elements. For each level, we design evaluation metrics across individual dimensions to provide clear signals, such as individual performance in clicking, dragging, typing, and scrolling for atomic action execution. Our evaluation on VideoGUI reveals that even the SoTA large multimodal model GPT4o performs poorly on visual-centric GUI tasks, especially for high-level planning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <h2 class="title is-3">Data Statistic</h2>
+    </div>
+    <div class="container is-max-desktop">
+      <center>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/stat.png" alt="stat" width="90%">
+            </figure>
+          </div>
+        </div>
+      </center>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <h2 class="title is-3">More Examples</h2>
+    </div>
+    <div class="container is-max-desktop">
+      <center>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/example_sd.png" alt="SD" width="90%">
+              <figcaption class="caption" style="margin-bottom: 1px; text-align: center;">
+                <strong>Image Editing by <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">StableDiffusion-WebUI</a></strong>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/example_ps.png" alt="PS" width="90%">
+              <figcaption class="caption" style="margin-bottom: 1px; text-align: center;">
+                <strong>Image Editing by <a href="https://www.adobe.com/products/photoshop.html">Adobe PhotoShop</a></strong>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/example_runway.png" alt="RW" width="90%">
+              <figcaption class="caption" style="margin-bottom: 1px; text-align: center;">
+                <strong>Video Creation by <a href="https://runwayml.com/">Runway</a></strong>                
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/example_capcut.png" alt="CC" width="90%">
+              <figcaption class="caption" style="margin-bottom: 1px; text-align: center;">
+                <strong>Video Editing by <a href="https://www.capcut.com/">Capcut</a></strong>                
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </center>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <h2 class="title is-3">Main Results on SoTA Multi-modal Language Models</h2>
+    </div>
+    <div class="container is-max-desktop">
+      <center>
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <figure style="width: 100%;">
+              <img src="./assets/main_res.png" alt="stat" width="90%">
+            </figure>
+          </div>
+        </div>
+      </center>
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="BibTeX">
+      <div class="container content is-max-desktop">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{lin2024videogui,
+      title = {VideoGUI: A Benchmark for GUI Automation from Instructional Videos},
+      author = {Kevin Qinghong Lin and Linjie Li and Difei Gao and Qinchen Wu and Mingyi Yan and Zhengyuan Yang and Lijuan Wang and Mike Zheng Shou},
+      year = {2024},
+}
+</code></pre>
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      <div class="container">
+        <!-- <div class="content has-text-centered">
+          <a class="icon-link" href="https://openreview.net/pdf?id=o3yygm3lnzS">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <a class="icon-link" href="https://github.com/bytedance/pv3d" class="external-link" disabled>
+            <i class="fab fa-github"></i>
+          </a>
+        </div> -->
+        <div class="columns is-centered">
+          <div class="column is-6">
+            <div class="content">
+              <p>
+                The source code of this webpage is based on the <a href="https://github.com/nerfies/nerfies.github.io/">
+                  Nerfies</a> and <a href="https://showlab.github.io/assistgui/">
+                  AssistGUI</a>. 
+                  <!-- project webpage. -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="./static/slick/slick.min.js"></script>
+</body>
+
+</html>

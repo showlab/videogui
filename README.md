@@ -4,8 +4,11 @@ Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https:/
 
 [![Project Website](https://img.shields.io/badge/Project-Website-blue)](https://showlab.github.io/videogui/)
 
+
 ## 📢 News
-- [2024.6.17] We release the arXiv paper.
+- [2024.6] We release the arXiv paper.
+- [2024.9] Accepted by NeurIPS 2024 D&B.
+- [2024.10] We released the data at [Huggingface dataset](https://huggingface.co/VideoGUI).
 
 ## 📖 Introduction
 > **TL;DR:** A Multi-modal Benchmark for Visual-centric GUI Automation from Instructional Videos.

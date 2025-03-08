@@ -1,4 +1,4 @@
-# [VideoGUI: A Benchmark for GUI Automation from Instructional Videos](https://showlab.github.io/videogui/)
+# [VideoGUI: A Benchmark for GUI Automation from Instructional Videos]([https://showlab.github.io/videogui/](https://arxiv.org/abs/2406.10227))
 [Kevin Qinghong Lin](https://qinghonglin.github.io/), [Linjie Li](https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en), [Difei Gao](https://scholar.google.com/citations?user=No9OsocAAAAJ&hl=en), Qinchen Wu,
 Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https://www.microsoft.com/en-us/research/people/lijuanw/), [Mike Zheng Shou](https://sites.google.com/view/showlab)
 
@@ -24,6 +24,9 @@ Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https:/
 **Instructional videos with human demonstration:** We source novel tasks from high-quality instructional videos, with annotators replicating these to reproduce effects.
 
 **Hierarchical planning and actions:** We provide detailed annotations with planning procedures and recorded actions for hierarchical evaluation.
+
+## 🔨 Online Environment
+If you want to set up the online environment, refer to the tutorial by [GUI-Thinker](https://github.com/showlab/GUI-Thinker).
 
 ## BibTeX
 If you find our work helpful, please kindly consider citing our paper. Thank you!

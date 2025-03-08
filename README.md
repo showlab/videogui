@@ -24,3 +24,13 @@ Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https:/
 **Instructional videos with human demonstration:** We source novel tasks from high-quality instructional videos, with annotators replicating these to reproduce effects.
 
 **Hierarchical planning and actions:** We provide detailed annotations with planning procedures and recorded actions for hierarchical evaluation.
+
+## BibTeX
+If you find our work helpful, please kindly consider citing our paper. Thank you!
+```
+@inproceedings{linvideogui,
+  title={VideoGUI: A Benchmark for GUI Automation from Instructional Videos},
+  author={Lin, Kevin Qinghong and Li, Linjie and Gao, Difei and Qinchen, WU and Yan, Mingyi and Yang, Zhengyuan and Wang, Lijuan and Shou, Mike Zheng},
+  booktitle={The Thirty-eight Conference on Neural Information Processing Systems Datasets and Benchmarks Track}
+}
+```

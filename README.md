@@ -28,7 +28,7 @@ Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https:/
 ## 🔨 Online Environment
 If you want to set up the online environment, refer to the tutorial by [GUI-Thinker](https://github.com/showlab/GUI-Thinker).
 
-## BibTeX
+## 🎓 BibTeX
 If you find our work helpful, please kindly consider citing our paper. Thank you!
 ```
 @inproceedings{linvideogui,

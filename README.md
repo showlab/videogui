@@ -10,6 +10,10 @@ Mingyi Yan, [Zhengyuan Yang](https://zyang-ur.github.io/), [Lijuan Wang](https:/
 - [2024.9] Accepted by NeurIPS 2024 D&B.
 - [2024.10] We released the data at [Huggingface dataset](https://huggingface.co/VideoGUI). Please stay tuned for further updates.
 
+## 📝 TODO
+- [ ] Upload the Evaluation code and metric implementation.
+- [ ] Upload the Missed metadata.
+
 ## 📖 Introduction
 > **TL;DR:** A Multi-modal Benchmark for Visual-centric GUI Automation from Instructional Videos.
 
